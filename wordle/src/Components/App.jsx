@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import Keyboard from './Keyboard'
 import Board from './Board'
 import words from '../assets/WORDS.txt'
+import '../Styles/App.css'
 
 function App() {
   const [word, setWord] = useState("");

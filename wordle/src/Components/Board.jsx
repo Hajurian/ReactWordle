@@ -3,10 +3,14 @@ import Guess from "./Guess";
 import '../Styles/Board.css'
 
 function Board(props) {
+    //variables
     const [guess, setGuess] = useState('');
     const [current, setCurrent] = useState(0);
     const defaultBoard = ['','','','','','']
     const [previous, setPrevious] = useState([]);
+
+
+    //handler for key presses
     const handleKeyDown = (event) => {
         if (event.key == 'Enter') {
             if (guess.length != 5) {
@@ -28,10 +32,17 @@ function Board(props) {
         } 
         setGuess(guess + event.key)
     }
+
+    //guess handler
     const handleGuess = (guess) => {
-        console.log(guess);
-        setPrevious([...previous, guess]);
+        if (guess == props.word){
+            console.log("WIN")
+        } else {
+            setPrevious([...previous, guess]);
+            setGuess("");
+        }
     }
+    //eventlistener mounter
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
         return () => {
@@ -43,7 +54,7 @@ function Board(props) {
         <>
             <div className="board">
                 {defaultBoard.map((g, i) => {
-                    return <Guess key={i} guess={guess} previous={previous} position={i} currentPos={current} />    
+                    return <Guess key={i} guess={guess} previous={previous} position={i} currentPos={current} word={props.word}/>    
                 })}
             </div>
         </>
