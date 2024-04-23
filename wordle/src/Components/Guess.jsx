@@ -5,16 +5,16 @@ function Guess(props) {
     return (<>
         <div className="row">
             {/*previous */}
-            {props.position < props.currentPos && defaultRow.map((letter, i) => {
-                return <Letter key={i} letter={props.previous[props.position].charAt(i)} letterPos={i} />
+            {props.word && props.position < props.currentPos && defaultRow.map((letter, i) => {
+                return <Letter key={i} letter={props.previous[props.position].charAt(i)} letterPos={i} word={props.word}/>
             })}
             {/*current */}
-            {props.position == props.currentPos && defaultRow.map((letter, i) => {
-                return <Letter key={i} letter={props.guess.charAt(i)} letterPos={i} />
+            {props.word && props.position == props.currentPos && defaultRow.map((letter, i) => {
+                return <Letter key={i} letter={props.guess.charAt(i)} letterPos={i} word={"null"}/>
             })}
             {/*future guesses */}
-            {props.position > props.currentPos && defaultRow.map((letter, i) => {
-                return <Letter key={i} letter={''} letterPos={i} />
+            {props.word && props.position > props.currentPos && defaultRow.map((letter, i) => {
+                return <Letter key={i} letter={''} letterPos={i} word={"null"}/>
             })}
             
         </div>

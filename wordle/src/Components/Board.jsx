@@ -9,7 +9,7 @@ function Board(props) {
     const defaultBoard = ['','','','','','']
     const [previous, setPrevious] = useState([]);
 
-
+    console.log(props.word);
     //handler for key presses
     const handleKeyDown = (event) => {
         if (event.key == 'Enter') {
@@ -35,8 +35,12 @@ function Board(props) {
 
     //guess handler
     const handleGuess = (guess) => {
+        if (current == 5 && guess != props.word) {
+            console.log("LOSE")
+        }
         if (guess == props.word){
             console.log("WIN")
+            setPrevious([...previous, guess]);
         } else {
             setPrevious([...previous, guess]);
             setGuess("");

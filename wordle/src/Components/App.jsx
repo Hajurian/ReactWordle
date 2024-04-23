@@ -5,11 +5,13 @@ import '../Styles/App.css'
 
 function App() {
   const [word, setWord] = useState("");
+  const [wordBank, setWordBank] = useState([]);
   useEffect(() =>{
     fetch(words)
     .then((r) => r.text())
     .then(text  => {
       const wordBank = text.split('\n');
+      setWordBank(wordBank);
       setWord(wordBank[Math.floor(Math.random() * wordBank.length)]);
     })
   }, [])
@@ -17,8 +19,8 @@ function App() {
   return (
     <>
       <section className='content'>
-        <h1>Title</h1>
-        {word && <Board word={word}/>}
+        <h1>WURDLE</h1>
+        {word && <Board wordBank={wordBank} word={word}/>}
       </section>
     </>
   )
