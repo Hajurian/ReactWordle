@@ -16,6 +16,11 @@ function Board(props) {
             if (guess.length != 5) {
                 return;
             }
+            
+            if (props.wordBank.indexOf(guess.toLowerCase()) < 0) {
+                console.log("hello")
+                return;
+            }
             handleGuess(guess);
             setCurrent(current + 1);
         }
@@ -30,15 +35,15 @@ function Board(props) {
         if (guess.length >= 5){
             return;
         } 
-        setGuess(guess + event.key)
+        setGuess(guess + event.key.toUpperCase())
     }
 
     //guess handler
     const handleGuess = (guess) => {
-        if (current == 5 && guess != props.word) {
+        if (current == 5 && guess != props.word.toUpperCase()) {
             console.log("LOSE")
         }
-        if (guess == props.word){
+        if (guess.toUpperCase() == props.word.toUpperCase()){
             console.log("WIN")
             setPrevious([...previous, guess]);
         } else {

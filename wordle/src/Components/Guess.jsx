@@ -10,7 +10,7 @@ function Guess(props) {
             })}
             {/*current */}
             {props.word && props.position == props.currentPos && defaultRow.map((letter, i) => {
-                return <Letter key={i} letter={props.guess.charAt(i)} letterPos={i} word={"null"}/>
+                return <Letter key={i} letter={props.guess.charAt(i)} letterPos={i} word={"null"} curr={true}/>
             })}
             {/*future guesses */}
             {props.word && props.position > props.currentPos && defaultRow.map((letter, i) => {
