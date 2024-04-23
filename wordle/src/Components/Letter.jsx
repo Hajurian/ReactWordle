@@ -4,24 +4,24 @@ function Letter(props) {
     const letter = props.letter;
     function handleColor() {
         if (word == 'null') {
-            return "inherit";
+            return "null";
         } 
         if (!letter) {
             return;
         }
         if (word.toUpperCase().includes(letter)) {
             if (word.toUpperCase().charAt(letterPos) == letter) {
-                return "#6ca965"
+                return "green"
             } else {
-                return "#c8b653"
+                return "yellow"
             }
         } else {
-            return "rgb(31, 33, 43)";
+            return "wrong";
         }
         
     }
     return (<>
-        <div className={props.curr && letter ? "letter-container current" : "letter-container"} style={{backgroundColor:handleColor()}}>
+        <div className={props.curr && letter ? "letter-container current" : "letter-container"} id={handleColor()} style={!props.curr ? {animationDelay: `${props.letterPos*.3}s`} : null}>
             {props.letter}
         </div>
     </>)
