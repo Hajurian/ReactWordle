@@ -9,9 +9,32 @@ function Board(props) {
     const [current, setCurrent] = useState(0);
     const defaultBoard = ['','','','','','']
     const [previous, setPrevious] = useState([]);
-
-    console.log(props.word);
+    const [keyMap, setKeyMap] = useState(new Map());
+    //logs the word once
+    useEffect(() => {
+        console.log(props.word);
+    }, [])
+    useEffect(() => {
+        //loop through all previous
+        for (let i in previous) {
+            //the current word
+            const currWord = previous[i].split('');
+            //checking each character
+            for (let j in currWord) {
+                if (props.word.toUpperCase().includes(currWord[j])) {
+                    if (props.word.toUpperCase()[j] == currWord[j]) {
+                        setKeyMap(map => new Map(map.set(currWord[j], 2)));
+                    } else {
+                        setKeyMap(map => new Map(map.set(currWord[j], 1)));
+                    }
+                } else {
+                    setKeyMap(map => new Map(map.set(currWord[j], 0)));
+                }
+            }
+        }
+    }, [previous])
     //handler for key presses
+    console.log(keyMap)
     const handleKeyDown = (event) => {
         if (event.key == 'Enter') {
             if (guess.length != 5) {
