@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Guess from "./Guess";
 import '../Styles/Board.css'
+import Keyboard from "./Keyboard";
 
 function Board(props) {
     //variables
@@ -16,9 +17,7 @@ function Board(props) {
             if (guess.length != 5) {
                 return;
             }
-            
             if (props.wordBank.indexOf(guess.toLowerCase()) < 0) {
-                console.log("hello")
                 return;
             }
             handleGuess(guess);
@@ -28,11 +27,17 @@ function Board(props) {
             setGuess(guess.substring(0, guess.length - 1))
             return;
         }
-        //no special characters
+        //no long characters
         if (event.key.length > 1) {
             return;
         }
+
+        //keep guess at length 5
         if (guess.length >= 5){
+            return;
+        }
+        //no special characters
+        if (event.keyCode < 65 || event.keyCode > 90) {
             return;
         } 
         setGuess(guess + event.key.toUpperCase())
@@ -65,6 +70,7 @@ function Board(props) {
                 {defaultBoard.map((g, i) => {
                     return <Guess key={i} guess={guess} previous={previous} position={i} currentPos={current} word={props.word}/>    
                 })}
+                <Keyboard guesses={previous} word={props.word}/>
             </div>
         </>
     )
