@@ -14,6 +14,7 @@ function Board(props) {
     useEffect(() => {
         console.log(props.word);
     }, [])
+    //2 means right letter right spot, 1 means right letter wrong spot, 0 means wrong letter
     useEffect(() => {
         //loop through all previous
         for (let i in previous) {
@@ -21,7 +22,9 @@ function Board(props) {
             const currWord = previous[i].split('');
             //checking each character
             for (let j in currWord) {
+                //if the letter is in the word
                 if (props.word.toUpperCase().includes(currWord[j])) {
+                    //if the letter is in the correct spot
                     if (props.word.toUpperCase()[j] == currWord[j]) {
                         setKeyMap(map => new Map(map.set(currWord[j], 2)));
                     } else {
@@ -34,7 +37,6 @@ function Board(props) {
         }
     }, [previous])
     //handler for key presses
-    console.log(keyMap)
     const handleKeyDown = (event) => {
         if (event.key == 'Enter') {
             if (guess.length != 5) {
@@ -93,7 +95,7 @@ function Board(props) {
                 {defaultBoard.map((g, i) => {
                     return <Guess key={i} guess={guess} previous={previous} position={i} currentPos={current} word={props.word}/>    
                 })}
-                <Keyboard guesses={previous} word={props.word}/>
+                <Keyboard word={props.word} keyMap={keyMap}/>
             </div>
         </>
     )
