@@ -1,9 +1,66 @@
+.board {
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .row {
     display: flex;
 }
+
 .letter-container {
-    width:2rem;
-    height: 2rem;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 4px;
+    border: 1px solid #C5C6C7;
     text-align: center;
+    color: #fff;
+    background-color: rgb(31, 33, 43);
+    transition: background-color 1s;
+}
+#green {
+    background-color: #6ca965;
+    animation: 1s flip;
+}
+#yellow {
+    background-color: #c8b653;
+    animation: 1s flip;
+}
+#null {
+    background-color: inherit;
+}
+#wrong {
+    background-color: rgb(31, 33, 43);
+    animation: 1s flip;
+}
+.current {
+    animation: 0.5s type;
+    
+}
+
+@keyframes type {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes flip {
+    0% {
+        transform: rotateX(180deg);
+    }
+    /* 100% {
+        transform: rotateX(0deg);
+    } */
 }
