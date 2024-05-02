@@ -24,7 +24,11 @@
     justify-content: center;
     margin:0.2rem;
     cursor:pointer;
-    background-color:#e0e1e2
+    background-color:#e0e1e2;
+    transition: all 0.5s;
+}
+.key-container:hover {
+    transform: scale(1.1);
 }
 #incorrect {
     color:#fff;

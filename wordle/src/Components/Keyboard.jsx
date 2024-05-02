@@ -17,8 +17,13 @@ function Keyboard(props) {
         } else {
             id = 'nullkey'
         }
+        function handleClick() {
+            props.onClick({
+                key: props.letter,
+            })
+        }
         return (<>
-            <div className="key-container" id = {id}>
+            <div className="key-container" id = {id} onClick={handleClick}>
                 {props.letter}
             </div>
         </>)
@@ -27,17 +32,17 @@ function Keyboard(props) {
         <div className="keyboard">
             <div className="keyboard-row">
                 {row1.map((letter, idx) => {
-                    return <Key key={idx} letter={letter} keyMap={props.keyMap} />
+                    return <Key key={idx} letter={letter} keyMap={props.keyMap} onClick={props.onClick}/>
                 })}
             </div>
             <div className="keyboard-row">
                 {row2.map((letter, idx) => {
-                    return <Key key={idx} letter={letter} keyMap={props.keyMap} />
+                    return <Key key={idx} letter={letter} keyMap={props.keyMap} onClick={props.onClick}/>
                 })}
             </div>
             <div className="keyboard-row">
                 {row3.map((letter, idx) => {
-                    return <Key key={idx} letter={letter} keyMap={props.keyMap} />
+                    return <Key key={idx} letter={letter} keyMap={props.keyMap} onClick={props.onClick}/>
                 })}
             </div>
         </div>

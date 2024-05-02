@@ -67,7 +67,12 @@ function Board(props) {
         } 
         setGuess(guess + event.key.toUpperCase())
     }
-
+    const handleKeyClick = (key) => {
+        if (guess.length >= 5){
+            return;
+        }
+        setGuess(guess + key.key)
+    }
     //guess handler
     const handleGuess = (guess) => {
         if (current == 5 && guess != props.word.toUpperCase()) {
@@ -95,7 +100,7 @@ function Board(props) {
                 {defaultBoard.map((g, i) => {
                     return <Guess key={i} guess={guess} previous={previous} position={i} currentPos={current} word={props.word}/>    
                 })}
-                <Keyboard word={props.word} keyMap={keyMap}/>
+                <Keyboard word={props.word} keyMap={keyMap} onClick={handleKeyClick}/>
             </div>
         </>
     )
