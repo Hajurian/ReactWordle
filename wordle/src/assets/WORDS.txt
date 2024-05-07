@@ -1036,6 +1036,7 @@ fluid
 fluke
 flume
 flung
+flunk
 flush
 flute
 flyer
