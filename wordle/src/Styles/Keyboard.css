@@ -2,7 +2,6 @@
     margin-top:2rem;
     width:100%;
     height:15rem;
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,4 +9,36 @@
 .keyboard-row {
     display: flex;
     height:3rem;
+    margin-bottom: 10px;;
+}
+.key-container {
+    width:2.5rem;
+    height:3rem;
+    border: 1px solid #C5C6C7;
+    border-radius:5px;
+    color: #000;
+    font-size:1rem;
+    font-weight:600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0.2rem;
+    cursor:pointer;
+    background-color:#e0e1e2;
+    transition: all 0.5s;
+}
+.key-container:hover {
+    transform: scale(1.1);
+}
+#incorrect {
+    color:#fff;
+    background:inherit;
+}
+#almost {
+    color:#fff;
+    background-color: #c8b653;
+}
+#correct {
+    color:#fff;
+    background-color: #6ca965;
 }
